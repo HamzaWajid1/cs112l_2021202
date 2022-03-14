@@ -1,0 +1,166 @@
+#include<iostream>
+using namespace std;
+class stringtype
+{
+private:
+	string stri1;
+	string stri2;
+public:
+
+	stringtype()
+	{
+		stri1 = " ";
+	stri2 = " ";
+	}
+	
+	void setvalue(string str1,string str2)
+	{
+		stri1 = str1;
+		stri2 = str2;
+
+
+	}
+	void print()
+	{
+		cout << "string 1 is " << stri1;
+		cout << "string 2 is " << stri2;
+	}
+	int maxlength()
+	{
+		int i = 0;
+		while (stri1[i] != '\0')
+		{
+			i++;
+		}
+		int j = 0;
+		while (stri2[j] != '\0')
+		{
+			j++;
+		}
+		if (i > j)
+		{
+			
+			return i;
+		}
+		else
+		{
+			return j;
+		}
+	}
+	int compare(string s1, string s2)
+	{
+		int a;
+		int count = 0;
+		int i = 0;
+		while (s1[i] != '\0' || s2[i] != '\0')
+		{
+			if (s1[i] > s2[i])
+			{
+				count++;
+				break;
+}
+			else if (s1[i] < s2[i])
+			{
+				count--;
+				break;
+			}
+			else if (s1[i] != '\0' && s2[i] == '\0')
+			{
+				count++;
+				break;
+			}
+			else if (s2[i] != '\0' && s1[i] == '\0')
+			{
+				count--;
+				break;
+			}
+			else
+			{
+				break;
+			}
+			i++;
+		}
+		return count;
+		
+	}
+	void copy(string sourse,string destination)
+
+	{
+		int i = 0;
+		while (sourse[i] != '\0')
+		{
+			destination[i] = sourse[i];
+			i++;
+			
+		}
+		
+		destination[i] = '\0';
+		cout<< destination;
+	}
+	string concatinate(string s1, string s2)
+	{
+		char s3[50];
+		int j = 0;
+			int i = 0;
+			while (s1[i] != '\0')
+			{
+				s3[j] = s1[i];
+				j++;
+				i++;
+		}
+			//s1[i] = '\0';
+			int k = 0;
+			while (s2[k] != '\0')
+			{
+				s3[j] = s2[k];
+				//j++;
+				k++;
+				j++;
+			}
+			s3[j] = '\0';
+			return s3;
+	}
+	int searchword(string word)
+	{
+		string s1 = "My name is hamza";
+		int i = 0;
+		while (s1[i] != '\0')
+		{
+			int j = 0;
+			if (s1[i] == word[j])
+			{
+				while (word[j] != '\0')
+				{
+
+				}
+				j++;
+
+			}
+			i++;
+		}
+	
+	}
+	int searchch()
+	{
+
+	}
+	~stringtype();
+};
+
+
+int main()
+{
+	string x;
+	stringtype a;
+	cout<<a.compare("hamza", "hamza");
+
+	a.copy("hamza", "destination");
+
+
+cout<<	a.concatinate("hamza", "wajid");
+
+
+
+
+	return 0;
+}
