@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+class heater
+{
+private:
+	int temperature;
+public:
+	heater()
+	{
+		temperature = 15;
+	}
+	void warmer()
+	{
+		temperature += 5;
+		cout << temperature;
+	}
+	void cooler()
+	{
+		temperature -= 5;
+		cout << temperature;
+	}
+
+
+	~heater() {
+		cout << "class destroyed";
+	};
+};
+
+
+
+
+int main()
+{
+	heater a;
+	int x;
+	cout << "1 for Warm 2 for cool anyother for exit ";
+	cin >> x;
+	while (x != 1 || x != 2)
+	{
+		if (x == 1)
+		{
+			a.warmer();
+
+		}
+		else if (x == 2)
+		{
+
+			a.cooler();
+
+		}
+		else
+		{
+			break;
+		}
+		cin >> x;
+	}
+
+
+
+
+
+
+
+
+
+
+	return 0;
+}
