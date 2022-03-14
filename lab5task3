@@ -10,10 +10,10 @@ public:
 	stringtype()
 	{
 		stri1 = " ";
-	stri2 = " ";
+		stri2 = " ";
 	}
-	
-	void setvalue(string str1,string str2)
+
+	void setvalue(string str1, string str2)
 	{
 		stri1 = str1;
 		stri2 = str2;
@@ -39,7 +39,7 @@ public:
 		}
 		if (i > j)
 		{
-			
+
 			return i;
 		}
 		else
@@ -58,7 +58,7 @@ public:
 			{
 				count++;
 				break;
-}
+			}
 			else if (s1[i] < s2[i])
 			{
 				count--;
@@ -81,9 +81,9 @@ public:
 			i++;
 		}
 		return count;
-		
+
 	}
-	void copy(string sourse,string destination)
+	void copy(string sourse, string destination)
 
 	{
 		int i = 0;
@@ -91,60 +91,107 @@ public:
 		{
 			destination[i] = sourse[i];
 			i++;
-			
+
 		}
-		
+
 		destination[i] = '\0';
-		cout<< destination;
+		int k = 0;
+		while (destination[k] != '\0')
+		{
+			cout << destination[k];
+			k++;
+		}
 	}
 	string concatinate(string s1, string s2)
 	{
 		char s3[50];
 		int j = 0;
-			int i = 0;
-			while (s1[i] != '\0')
-			{
-				s3[j] = s1[i];
-				j++;
-				i++;
-		}
-			//s1[i] = '\0';
-			int k = 0;
-			while (s2[k] != '\0')
-			{
-				s3[j] = s2[k];
-				//j++;
-				k++;
-				j++;
-			}
-			s3[j] = '\0';
-			return s3;
-	}
-	int searchword(string word)
-	{
-		string s1 = "My name is hamza";
 		int i = 0;
 		while (s1[i] != '\0')
 		{
+			s3[j] = s1[i];
+			j++;
+			i++;
+		}
+		//s1[i] = '\0';
+		int k = 0;
+		while (s2[k] != '\0')
+		{
+			s3[j] = s2[k];
+			//j++;
+			k++;
+			j++;
+		}
+		s3[j] = '\0';
+		return s3;
+	}
+	int searchword(string word)
+	{
+		//string s1 = "My name is hamza";
+		int i = 0;
+		int x=0;
+		while (stri1[i] != '\0')
+		{
 			int j = 0;
-			if (s1[i] == word[j])
-			{
-				while (word[j] != '\0')
+
+			
+			if (stri1[i] == word[j]) {
+				int k = i;
+				while (word[j] != '\0' || stri1[k]!=' ')
 				{
+					if (stri1[k] == word[j])
+					{
+					cout << j;
+					cout << endl << k;
+						j++;
+						k++;
+					}
+					else
+					{
+						k--;
+						j++;
+						break;
+					}
 
 				}
-				j++;
+				if (j == k - i)
+				{
+					x++;
+				}
 
+			}
+			
+
+			
+		i++;
+		}
+		
+			return x;
+     }
+		
+	
+
+
+	int searchch(char c)
+	{
+		int i = 0;
+		while (stri1[i] != '\0')
+		{
+			if (stri1[i] == c)
+			{
+				break;
 			}
 			i++;
 		}
-	
+		if (stri1[i] == c)
+		{
+			return 1;
+		}
+		else {
+			return 0;
+		}
 	}
-	int searchch()
-	{
-
-	}
-	~stringtype();
+	~stringtype() {};
 };
 
 
@@ -152,15 +199,16 @@ int main()
 {
 	string x;
 	stringtype a;
-	cout<<a.compare("hamza", "hamza");
+	cout << a.compare("bamza", "aamza");
 
 	a.copy("hamza", "destination");
 
 
-cout<<	a.concatinate("hamza", "wajid");
-
-
-
-
+	cout << a.concatinate("hamza", "wajid");
+	//a.searchword("hamza");
+	a.setvalue("hamza is a good boy", "saad");
+	cout << a.searchword("is") << endl;
+	
+	cout << a.searchch('c');
 	return 0;
 }
