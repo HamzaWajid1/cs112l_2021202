@@ -1,0 +1,100 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+class office
+{
+	static int officernumber;
+	int idnumber;
+	string name;
+	string rank;
+
+public:
+	void get()
+	{
+		cout << "Enter id of officer:";
+			cin >> idnumber;
+			cout << "enter name";
+			cin >> name;
+			cout << "Enter rank";
+			cin >> rank;
+	}
+	void compare()
+	{
+		int d = idnumber;
+		double i = 0;
+		while (d != 0)
+		{
+			d /= 10;
+			i++;
+		}
+		int x = idnumber;
+		int a;
+		int c=0;
+		while (x != 0)
+		{
+			a = x % 10;
+			x /= 10;
+			c += a * pow(10, i-1);
+			i -- ;
+		}
+		if (c == idnumber)
+		{
+			cout << "palindrome,so no access";
+		}
+		else
+		{
+			cout << "access granted";
+			officernumber++;
+		}
+
+
+	}
+	static int oficercheck()
+	{
+		return officernumber;
+	}
+
+
+}; int office::officernumber = 0;
+
+int main()
+{
+	int number;
+	cout << "1:login\n";
+	cout << "2:officecheck\n";
+	cout << "3:Exit\n";
+	cout << "Enter the desired option ";
+	cin >> number;
+			office a;
+	while (1)
+	{
+		
+		if (number == 1)
+		{
+			a.get();
+			a.compare();
+
+		}
+		else if (number == 2)
+		{
+			cout << a.oficercheck();
+		}
+		else if(number==3)
+		{
+			break;
+		}
+		
+		cout << "Enter the desired option ";
+		cin >> number;
+
+	}
+	
+
+
+
+
+
+
+	return 0;
+}
