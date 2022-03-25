@@ -1,0 +1,96 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+
+
+class person;
+class coordinator;
+
+
+class person
+{
+	string name;
+	
+public:
+	friend class coordinator;
+	
+	
+
+
+};
+
+class coordinator
+{
+	person a, b;
+public:
+	void setter()
+	{
+		cout << "Enter the uni and competition name  ";
+		getline(cin, a.name);
+		cout << "Enter the uni and competition name  ";
+		getline(cin,b.name);
+
+	}
+	void comparee()
+	{
+		int z;
+		int i = 0;
+		while (a.name[i] != ' ')
+		{
+			i++;
+		}
+		int j = 0;
+		while (b.name[j] != ' ')
+		{
+			j++;
+
+		}
+		if (i > j)
+		{
+			z = i;
+		}
+		else
+		{
+			z = j;
+		}
+		 int count = 0;
+		int determine;
+		while (a.name[count+i] != '\0' && b.name[count+j] != '\0')
+		{
+			if (a.name[count + i] > b.name[count + j])
+			{
+				break;
+			}
+			if (a.name[count + i] < b.name[count + j])
+			{
+				break;
+			}
+			else
+			{
+				count++;
+			}
+
+
+		}
+		if (a.name[count + i] == b.name[count + j])
+		{
+			cout << "message from coordinator person 1 and 2 are roommates and the room is " << z;
+		}
+		else
+		{
+			cout << "message from coordinator person 1 and 2 are not roommates";
+		}
+	}
+
+};
+int main()
+{
+	coordinator c;
+	c.setter();
+	c.comparee();
+
+
+	return 0;
+}
