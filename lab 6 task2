@@ -8,8 +8,10 @@ class office
 	int idnumber;
 	string name;
 	string rank;
+	
 
 public:
+	int*array=new int[officernumber];
 	void get()
 	{
 		cout << "Enter id of officer:";
@@ -18,6 +20,24 @@ public:
 			cin >> name;
 			cout << "Enter rank";
 			cin >> rank;
+	}
+	void store()
+	{
+		int *temp=new int[officernumber];
+		for(int i=0;i<officernumber-1;i++)
+		{
+			temp[i]=array[i];
+		}
+		temp[officernumber-1]=idnumber;
+		delete[] array;
+		array=temp;
+	}
+	void display()
+	{
+		for(int i=0;i<officernumber;i++)
+		{
+			cout<<array[i];
+		}
 	}
 	void compare()
 	{
@@ -46,8 +66,9 @@ public:
 		{
 			cout << "access granted";
 			officernumber++;
+			store();
 		}
-
+      
 
 	}
 	static int oficercheck()
@@ -74,6 +95,7 @@ int main()
 		{
 			a.get();
 			a.compare();
+			a.display();
 
 		}
 		else if (number == 2)
