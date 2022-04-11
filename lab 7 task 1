@@ -1,0 +1,109 @@
+
+#include<iostream>
+using namespace std;
+class person;
+class date
+{
+private:
+	int day;
+	int month;
+	int year;
+public:
+
+	friend class person;
+	date(int d = 0, int m = 0, int y = 0)
+	{
+		day = d;
+		month = m;
+		year = y;
+	}
+	friend ostream& operator<<(ostream& out, date d);
+friend istream& operator>>(istream& in,date &d);
+	bool operator<(date d)
+	{
+		if (this->year < d.year)
+		{
+			return true;
+		}
+		else if (month < d.month)
+		{
+			return true;
+		}
+		else if (day < d.day)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+};
+istream& operator>>(istream& in,date& d)
+{
+	cout<<"day/month/year";
+	in>>d.day>>d.month>>d.year;
+}
+	 ostream& operator<<(ostream& out, date d)
+	{
+		out << d.day << "-" << d.month << "-" << d.year;
+		return out;
+	}
+class person
+{
+private:
+	string username;
+	int id;
+public:
+	date d;
+	
+	static int count;
+	person(string user = " ",int i = 0)
+	{
+		username = user;
+		id = i;
+		count++;
+	}
+	friend ostream& operator<<(ostream& out, person p);
+	friend istream& operator>>(istream& in, person &p);
+}; int person::count = 0;
+ostream& operator<<(ostream& out , person p)
+{
+	
+	out << p.username << "with id " << p.id;
+	return out;
+}
+istream& operator>>(istream& in, person& p)
+{
+	cout << "Enter id";
+	in >> p.id;
+	cout << "Enter name";
+	in >> p.username;
+	
+	in >>p.d;
+	
+	
+	return in;
+}
+int main()
+{
+	person p1;
+	person p2;
+	cin >> p1;
+	cin.ignore();
+	cin >> p2;
+	if (p1.d < p2.d)
+	{
+	cout  << p1 << "is senior to " << p2<<"because "<<p1.d<<"is earlier than "<<p2.d;
+	}
+	else
+	{
+		cout << p2 << "is senior to " << p1<<"because "<<p2.d<<"is earler than "<<p1.d;
+	}
+
+
+
+
+	return 0;
+}
