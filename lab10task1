@@ -1,0 +1,131 @@
+#include<iostream>
+using namespace std;
+
+class vehicle
+{
+protected:
+	int number_tyres;
+	int size;
+	int number_of_seats;
+public:
+	vehicle(int nt = 0, int s = 0, int nos = 0)
+	{
+		number_tyres = nt;
+		size = s;
+		number_of_seats = nos;
+	}
+	virtual void set()
+	{
+		cin >> number_tyres;
+		cin >> size;
+		cin >> number_of_seats;
+		
+    }
+	int get_tyres()
+	{
+		return number_tyres;
+	}
+	int get_size()
+	{
+		return size;
+	}
+	int get_number_of_seats()
+	{
+		return number_of_seats;
+	}
+	virtual void print()
+	{
+		cout << "tyres are" << number_tyres;
+		cout << "\n size is " << size;
+		cout << "\n number of seats is " << number_of_seats;
+	}
+	~vehicle(){};
+};
+
+class car:public vehicle
+{
+protected:
+	string color;
+public:
+	car(int nt = 0, int s = 0, int nos = 0, string c = "  "):vehicle(nt,s,nos)
+	{
+		color = c;
+	}
+	void set()
+	{
+		cin>>number_tyres;
+		cin >> size;
+		cin>>number_of_seats;
+		cout << "Enter color";
+		cin >> color;
+		
+	}
+	
+	string get_color()
+	{
+		return color;
+	}
+	void print()
+	{
+		cout << "tyres are" << number_tyres;
+		cout << "\n size is " << size;
+		cout << "\n number of seats is " << number_of_seats;
+		cout << "\n the color is " << color;
+	}
+	~car(){};
+};
+class vitz :public car
+{
+	int model;
+	int plate_number;
+public:
+	vitz(int nt = 0, int s = 0, int nos = 0, string c = "  ", int m = 0, int pn = 0) :car(nt, s, nos, c)
+	{
+		model = m;
+		plate_number = pn;
+	}
+	void set()
+	{
+		cin >> number_tyres;
+		cin >> size;
+		cin >> number_of_seats;
+		cout << "Enter color";
+		cin >> color;
+		cin >> model;
+		cin >> plate_number;
+
+	}
+	int get_model()
+	{
+		return model;
+	}
+	int get_platenumber()
+	{
+		return plate_number;
+	}
+	void print()
+	{
+		cout << "tyres are" << number_tyres;
+		cout << "\n size is " << size;
+		cout << "\n number of seats is " << number_of_seats;
+		cout << "\n the color is " << color;
+		cout << "The model is " << model;
+		cout << "The plate number is " << plate_number;
+	}
+	~vitz(){};
+};
+
+int main()
+{
+	vehicle* ptr;
+	car hamza;
+	//ptr = &hamza;
+	//hamza.set(4, 1300, 5, "red");
+	//ptr->print();
+
+	vitz economy;
+	ptr = &economy;
+	economy.set();
+	ptr->print();
+	return 0;
+}
