@@ -1,0 +1,134 @@
+#include<iostream>
+using namespace std;
+
+
+class myfather
+{
+protected:
+	string name;
+	string eye_color;
+	string hair_color;
+public:
+	myfather(string n = "      ", string e = "    ", string hc = "    ")
+	{
+		name = n;
+		eye_color = e;
+		hair_color = hc;
+	}
+	virtual void set()
+	{
+		cin >> name;
+		cin >> eye_color;
+		cin >> hair_color;
+	}
+	string get_name()
+	{
+		return name;
+	}
+	string get_eyecolor()
+	{
+		return eye_color;
+	}
+	string get_haircolor()
+	{
+		return eye_color;
+	}
+
+
+	~myfather() {};
+
+};
+class my_mother
+{
+protected:
+	string name;
+	string eye_color;
+	string hair_color;
+public:
+	my_mother(string n = "      ", string e = "    ", string hc = "    ")
+	{
+		name = n;
+		eye_color = e;
+		hair_color = hc;
+	}
+	virtual void set()
+	{
+		cin >> name;
+		cin >> eye_color;
+		cin >> hair_color;
+	}
+	string get_name()
+	{
+		return name;
+	}
+	string get_eyecolor()
+	{
+		return eye_color;
+	}
+	string get_haircolor()
+	{
+		return eye_color;
+	}
+	~my_mother(){};
+};
+class myself :public myfather
+{
+private:
+	string education;
+	int age;
+public:
+	myself(string n = "      ", string e = "    ", string hc = "    ", string ed = "      ", int a = 0):myfather(n,e,hc)
+	{
+		education = ed;
+		age = a;
+	}
+	void set()
+	{
+		cin >> name;
+		cin >> eye_color;
+		cin >> hair_color;
+		cin >> education;
+		cout << "enter age";
+		cin >> age;
+	}
+	string get_education()
+	{
+		return education;
+	}
+	int age()
+	{
+		return age;
+	}
+
+};
+class my_sister :public myfather, public my_mother
+{
+	string education;
+	int age;
+public:
+	my_sister(string n = "      ", string e = "    ", string hc = "    ", string ed = "      ", int a = 0):myfather(n,e,hc)
+	{
+		
+		education = ed;
+		age = a;
+	}
+	void set()
+	{
+		cin >> name;
+		cin >> eye_color;
+		cin >> hair_color;
+		cin >> education;
+		cout << "enter age";
+		cin >> age;
+	}
+
+
+};
+int main()
+{
+
+
+
+
+	return 0;
+}
